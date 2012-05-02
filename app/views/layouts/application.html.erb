@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Goqi</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <%= link_to 'login', login_path %>
+  <%= link_to 'signup', signup_path %>
+  <%= link_to 'logout', logout_path %>
+</header>
+<aside>
+</aside>
+<%= yield %>
+<footer>
+  no cotent currently
+</footer>
+
+</body>
+</html>
