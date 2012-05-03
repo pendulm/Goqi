@@ -1,9 +1,15 @@
 Goqi::Application.routes.draw do
 
+  resources :users, except: [:new, :create] do
+    get '/check_email_available', on: :collection
+  end
+
   controller :session do
     get 'login' => :login
-    post 'signup' => :signup
+    get 'signup' => :signup
     delete 'logout' => :logout
+    post 'login' => :create_session
+    post 'signup' => :create_user
   end
 
   # The priority is based upon order of creation:

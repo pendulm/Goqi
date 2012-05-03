@@ -1,3 +1,39 @@
 // Place all the styles related to the Session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.session {
+  form {
+    legend {
+      background-color: #444;
+      color: white;
+      padding: 5px 10px;
+    }
+    .field {
+      margin: 10px;
+      label {
+        display: inline-block;
+        width: 40px;
+      }
+    }
+    .action {
+      margin: 10px;
+    }
+  }
+}
+
+#new_user label {
+  width: 60px;
+}
+
+#check_email_available {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#error_explanation {
+  ul {
+    color: red;
+  }
+}

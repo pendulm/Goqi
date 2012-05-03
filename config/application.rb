@@ -24,6 +24,7 @@ module Goqi
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    config.action_view.field_error_proc = proc { |html_tag, instance| "#{html_tag}".html_safe }
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

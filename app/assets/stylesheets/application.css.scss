@@ -1,0 +1,63 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require normalize
+ *= require_self
+ *= require_tree .
+*/
+$black: #000;
+$lightblack: #444;
+body {
+  background: url(bg.jpg) repeat;
+  font-size: 14px;
+
+  header {
+    background: $lightblack;
+    background: -o-linear-gradient(top, $black, $lightblack);
+    background: -mos-linear-gradient(top, $black, $lightblack);
+    background: -webkit-linear-gradient(top, $black, $lightblack);
+    background: -ms-linear-gradient(top, $black, $lightblack);
+    height: 35px;
+    //  text-align: right;
+    line-height: 35px;
+    a {
+      color: white;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 15px;
+      &:hover {
+        color: #ffcb14;
+      }
+    }
+  }
+
+}
+
+#container {
+  margin: 20px;
+  width: 960px;
+  min-height: 500px;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  aside {
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    border-left: 1px solid #c0c0c0;
+  }
+}
+
+#main {
+  padding: 10px;
+  width: 650px;
+}
