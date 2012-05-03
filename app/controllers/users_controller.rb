@@ -70,9 +70,9 @@ class UsersController < ApplicationController
   end
 
   def check_email_available
-    @result = User.is_email_available? params[:email]
+    result = User.is_email_available? params[:email]
     respond_to do |format|
-      format.js
+      format.json { render json: result }
     end
   end
 end

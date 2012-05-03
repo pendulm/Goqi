@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+    $("#check_email_available").click ->
+        email = $("#user_email").val().trim();
+        $.ajax
+            url:'/users/check_email_available?email=' + email
+            dataType: 'json'
+            success: (result) ->
+                $("#show_check_result").html(if result then "✓" else "✗")
+                .css "color", if result then "green" else "red"
