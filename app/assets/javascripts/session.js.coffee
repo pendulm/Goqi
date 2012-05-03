@@ -5,5 +5,5 @@ $(document).ready ->
             url:'/users/check_email_available?email=' + email
             dataType: 'json'
             success: (result) ->
-                $("#show_check_result").html(if result then "✓" else "✗")
+                $("#show_check_result").html(if result then "\u2713" else "\u2717")
                 .css "color", if result then "green" else "red"
