@@ -21,7 +21,7 @@ body {
   header {
     background: $lightblack;
     background: -o-linear-gradient(top, $black, $lightblack);
-    background: -mos-linear-gradient(top, $black, $lightblack);
+    background: -moz-linear-gradient(top, $black, $lightblack);
     background: -webkit-linear-gradient(top, $black, $lightblack);
     background: -ms-linear-gradient(top, $black, $lightblack);
     height: 35px;
