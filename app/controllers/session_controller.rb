@@ -12,7 +12,7 @@ class SessionController < ApplicationController
 
   def logout
     session[:uid] = nil
-    redirect_to root_path, notice: "已成功注销"
+    redirect_to root_path, notice: t(:logout_notice)
   end
 
   def create_session
@@ -21,7 +21,7 @@ class SessionController < ApplicationController
       session[:uid] = user.id
       redirect_to root_path
     else
-      redirect_to login_path, notice: "用户名或密码错误"
+      redirect_to login_path, notice: t(:login_fail_notice)
     end
   end
 
@@ -30,7 +30,7 @@ class SessionController < ApplicationController
 
     if @user.save
       session[:uid] = @user.id
-      redirect_to root_path, notice: '感谢您的注册'
+      redirect_to root_path, notice: t(:welcome_notice)
     else
       render action: "signup"
     end

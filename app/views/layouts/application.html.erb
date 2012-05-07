@@ -8,12 +8,12 @@
 </head>
 <body class="<%= controller.controller_name %>">
 <header>
-  <%= link_to '首页', root_path %>
+  <%= link_to t(:index), root_path %>
   <% unless session[:uid] %>
-    <%= link_to '登录', login_path %>
-    <%= link_to '注册', signup_path %>
+    <%= link_to t(:login), login_path %>
+    <%= link_to t(:signup), signup_path %>
   <% else %>
-    <%= link_to '注销', logout_path, method: :delete %>
+    <%= link_to t(:logout), logout_path, method: :delete %>
   <% end %>
 </header>
 <div id="container">
@@ -21,7 +21,7 @@
     <%= yield %>
   </section>
   <aside>
-    侧边栏
+    no content here
   </aside>
 </div>
 <footer>
