@@ -1,4 +1,3 @@
-#coding: utf-8
 require 'test_helper'
 
 class SessionControllerTest < ActionController::TestCase
@@ -14,8 +13,8 @@ class SessionControllerTest < ActionController::TestCase
 
   setup do
     @user_mike = users(:mike)
-    @header_link_before_login = %w{ 首页 登录 注册 }
-    @header_link_after_login = %w{ 首页 注销 }
+    @header_link_before_login = %w{ index login signup }.map { |s| I18n.t s}
+    @header_link_after_login = %w{ index logout }.map { |s| I18n.t s}
   end
 
   test "should get index" do
@@ -46,7 +45,7 @@ class SessionControllerTest < ActionController::TestCase
     post :create_session, email: @user_mike.email , password: 'xxxooo'
     assert_redirected_to login_path
     assert_nil session[:uid]
-    assert_equal '用户名或密码错误', flash[:notice]
+    assert_equal I18n.t(:login_fail_notice), flash[:notice]
   end
 
 
@@ -58,7 +57,7 @@ class SessionControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_path
     assert_not_nil session[:uid]
-    assert_equal '感谢您的注册', flash[:notice]
+    assert_equal I18n.t(:welcome_notice), flash[:notice]
   end
 
   test "signup to create user fail" do
@@ -76,7 +75,7 @@ class SessionControllerTest < ActionController::TestCase
     delete :logout
     assert_redirected_to root_path
     assert_nil session[:uid] = nil
-    assert_equal '已成功注销', flash[:notice]
+    assert_equal I18n.t(:logout_notice), flash[:notice]
   end
 
 end

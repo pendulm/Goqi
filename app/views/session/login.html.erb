@@ -1,18 +1,18 @@
 <% if notice %>
-<p><%= notice %></p>
+<p id="error_notice"><%= notice %></p>
 <% end %>
 <%= form_tag login_path do %>
-  <%= field_set_tag '欢迎回来' do %>
+  <%= field_set_tag t(:welcome) do %>
     <div class="field">
-      <%= label_tag 'email', '邮箱' %>
+      <%= label_tag 'email', t(:email, scope: 'activerecord.attributes.user') %>
       <%= email_field_tag 'email', nil, required: true, autofocus: true %><br />
     </div>
     <div class="field">
-      <%= label_tag 'password', '密码' %>
+      <%= label_tag 'password', t(:password, scope: 'activerecord.attributes.user') %>
       <%= password_field_tag 'password', nil, required: true %><br />
     </div>
     <div class="action">
-      <%= submit_tag '登录' %>&nbsp;&nbsp;<%= check_box_tag 'remember_me', 'yes', true %>记住我
+      <%= submit_tag t(:login) %>&nbsp;&nbsp;<%= check_box_tag 'remember_me', 'yes', true %><%= t(:remember_me) %>
     </div>
   <% end %>
 <% end %>

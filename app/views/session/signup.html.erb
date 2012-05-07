@@ -9,26 +9,26 @@
     </div>
   <% end %>
 
-  <%= field_set_tag '欢迎' do %>
+  <%= field_set_tag t(:welcome) do %>
     <div class="field">
-      <%= f.label :email, '邮箱' %>
+      <%= f.label :email, t(:email, scope: 'activerecord.attributes.user') %>
       <%= f.email_field :email, required: true, autofocus: true %>
-      <span id="check_email_available">可用</span>&nbsp;<span id="show_check_result">？</span>
+      <span id="check_email_available"><%= t(:available) %></span>&nbsp;<span id="show_check_result">？</span>
     </div>
     <div class="field">
-      <%= f.label :password, '密码' %>
+      <%= f.label :password, t(:password, scope: 'activerecord.attributes.user') %>
       <%= f.password_field :password, required: true %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation, '密码确认' %>
+      <%= f.label :password_confirmation, t(:confirm, scope: 'activerecord.attributes.user') %>
       <%= f.password_field :password_confirmation, required: true %>
     </div>
     <div class="field">
-      <%= f.label :nickname, '昵称' %>
+      <%= f.label :nickname, t(:nickname, scope: 'activerecord.attributes.user')%>
       <%= f.text_field :nickname %>
     </div>
     <div class="actions">
-      <%= f.submit '注册' %>
+      <%= f.submit t(:signup) %>
     </div>
   <% end %>
 <% end %>

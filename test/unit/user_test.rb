@@ -6,8 +6,6 @@ class UserTest < ActiveSupport::TestCase
   test "empty email is invalid" do
     user = User.new
     assert user.invalid?
-    assert user.errors[:email].include? "can't be blank"
-    assert user.errors[:password_digest].include? "can't be blank"
   end
 
   test "test wrong format email" do
