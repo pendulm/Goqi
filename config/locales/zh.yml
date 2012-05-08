@@ -13,6 +13,7 @@ zh:
   login_fail_notice: "邮箱或密码错误"
   welcome_notice: "欢迎第一次到来"
   logout_notice: "已成功退出"
+  friends: "好友"
   # active_support begin
   date:
     abbr_day_names:

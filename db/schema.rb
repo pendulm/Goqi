@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502114836) do
+ActiveRecord::Schema.define(:version => 20120508025951) do
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.boolean  "status"
+    t.string   "remark_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "friendships_lables", :force => true do |t|
+    t.integer "friendship_id"
+    t.integer "label_id"
+  end
+
+  create_table "labels", :force => true do |t|
+    t.string  "name"
+    t.integer "user_id"
+    t.integer "friendships_count"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "nickname"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "signon_time"
+    t.datetime "signup_time"
     t.datetime "last_visit_time"
   end
 

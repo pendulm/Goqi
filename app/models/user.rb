@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :nickname
+  has_many :friendships, foreign_key: :from
+  has_many :labels
   has_secure_password
 
   before_save { |user| user.email.downcase! }

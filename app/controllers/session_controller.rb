@@ -1,6 +1,7 @@
 # coding: utf-8
 class SessionController < ApplicationController
   def index
+    @petitions = Friendship.where to: session[:uid], status: false
   end
 
   def login

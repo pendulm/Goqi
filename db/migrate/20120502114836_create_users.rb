@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :nickname
       t.string :email
       t.string :password_digest
-      t.timestamp :signon_time
+      t.timestamp :signup_time
       t.timestamp :last_visit_time
     end
 

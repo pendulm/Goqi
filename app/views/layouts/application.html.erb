@@ -8,13 +8,26 @@
 </head>
 <body class="<%= controller.controller_name %>">
 <header>
-  <%= link_to t(:index), root_path %>
-  <% unless session[:uid] %>
-    <%= link_to t(:login), login_path %>
-    <%= link_to t(:signup), signup_path %>
-  <% else %>
-    <%= link_to t(:logout), logout_path, method: :delete %>
-  <% end %>
+  <ul id="header-outer-ul">
+    <li><%= link_to t(:index), root_path %></li>
+    <% unless session[:uid] %>
+    <li><%= link_to t(:login), login_path %></li>
+    <li><%= link_to t(:signup), signup_path %></li>
+    <% else %>
+    <li>
+      <ul class="drop-down">
+        <li><%= link_to "好友", friendships_path %></li>
+        <li>
+          <ul class="second">
+            <li><a href="#">好友请求</a></li>
+            <li><a href="#">查找添加</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><%= link_to t(:logout), logout_path, method: :delete %></li>
+    <% end %>
+  </ul>
 </header>
 <div id="container">
   <section id="main">

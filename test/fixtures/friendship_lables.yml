@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  friendship_id: 1
+  label_id: 1
+
+two:
+  friendship_id: 1
+  label_id: 1

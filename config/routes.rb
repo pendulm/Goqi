@@ -1,5 +1,13 @@
 Goqi::Application.routes.draw do
 
+  resources :friendships do
+    #  post '/request', on: :collection
+    post 'apply', on: :collection
+    get 'petition', on: :collection
+  end
+
+  resources :labels
+
   resources :users, except: [:new, :create] do
     get '/check_email_available', on: :collection
   end

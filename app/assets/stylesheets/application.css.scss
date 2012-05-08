@@ -25,18 +25,24 @@ body {
     background: -webkit-linear-gradient(top, $black, $lightblack);
     background: -ms-linear-gradient(top, $black, $lightblack);
     height: 35px;
-    //  text-align: right;
+    color: white;
+    font-size: 16px;
     line-height: 35px;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
     a {
       color: white;
       display: inline-block;
       text-decoration: none;
-      font-size: 16px;
       margin: 0 15px;
       &:hover {
         color: #ffcb14;
       }
     }
+
   }
 
 }
@@ -85,4 +91,25 @@ body {
   text-align: center;
   border-radius: 3px;
   padding: 5px 0;
+}
+
+#header-outer-ul {
+  & > li {
+    float: left;
+    &:hover .second {
+      display: block;
+    }
+  }
+  .drop-down {
+    position: relative;
+    .second {
+      display: none;
+      width: 100px;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      z-index: 1;
+      background-color: $lightblack;
+    }
+  }
 }
