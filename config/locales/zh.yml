@@ -11,6 +11,7 @@ zh:
   remember_me: "记住我"
   welcome: "欢迎"
   login_fail_notice: "邮箱或密码错误"
+  welcome_notice: "欢迎第一次到来"
   logout_notice: "已成功退出"
   # active_support begin
   date:
