@@ -11,31 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508025951) do
+ActiveRecord::Schema.define(:version => 20120508100924) do
 
   create_table "friendships", :force => true do |t|
-    t.integer  "from"
-    t.integer  "to"
-    t.boolean  "status"
+    t.integer  "from",                           :null => false
+    t.integer  "to",                             :null => false
+    t.boolean  "status",      :default => false, :null => false
     t.string   "remark_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
-  create_table "friendships_lables", :force => true do |t|
-    t.integer "friendship_id"
-    t.integer "label_id"
+  add_index "friendships", ["from", "to"], :name => "index_friendships_on_from_and_to", :unique => true
+
+  create_table "friendships_labels", :id => false, :force => true do |t|
+    t.integer "friendship_id", :null => false
+    t.integer "label_id",      :null => false
   end
 
   create_table "labels", :force => true do |t|
-    t.string  "name"
-    t.integer "user_id"
-    t.integer "friendships_count"
+    t.string  "name",                             :null => false
+    t.integer "user_id",                          :null => false
+    t.integer "friendships_count", :default => 0
   end
+
+  add_index "labels", ["name", "user_id"], :name => "index_labels_on_name_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "nickname"
-    t.string   "email"
+    t.string   "email",           :null => false
     t.string   "password_digest"
     t.datetime "signup_time"
     t.datetime "last_visit_time"

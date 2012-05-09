@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.all
+    @user = User.find(session[:uid])
+    @friendships = Friendship.includes(:friend).where(from: @user.id, status: true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,21 +82,38 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def apply
+  def fsend
     receiver = User.find_by_email params[:email]
+    user = get_current_user
     if receiver
-      @friendship = Friendship.new(from: session[:uid], to: receiver.id)
-      @friendship.status = false
-      if @friendship.save
-        redirect_to friendships_url, notice: "your appling is hanging"
+      @friendship = Friendship.new(from: user.id, to: receiver.id)
+      if user.id != receiver.id and @friendship.save
+        msg = "your appling is hanging"
       else
-        render action: "new"
+        msg = "can't build friendship"
       end
     else
-      redirect_to friendships_url, notice: "this user not exist"
+      msg = "this user not exist"
     end
+    redirect_to friendships_url, notice: msg
   end
   
-  def petition
+  def receive
+    user = get_current_user
+    @friendships = Friendship.where(status: false, to: user.id)
+  end
+
+  def accept
+    friendship = Friendship.find(params[:id])
+    friendship.status = true
+    friendship.save
+    Friendship.create(from: friendship.to, to: friendship.from)
+    redirect_to friendships_url
+  end
+
+  def reject
+    friendship = Friendship.find(params[:id])
+    friendship.destroy
+    redirect_to receive_friendships_url
   end
 end

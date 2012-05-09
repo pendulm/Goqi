@@ -1,9 +1,10 @@
 Goqi::Application.routes.draw do
 
   resources :friendships do
-    #  post '/request', on: :collection
-    post 'apply', on: :collection
-    get 'petition', on: :collection
+    post 'fsend', on: :collection
+    get 'receive', on: :collection
+    post 'accept', on: :member
+    post 'reject', on: :member
   end
 
   resources :labels

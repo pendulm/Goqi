@@ -19,7 +19,7 @@
         <li><%= link_to "好友", friendships_path %></li>
         <li>
           <ul class="second">
-            <li><a href="#">好友请求</a></li>
+            <li><%= link_to "好友请求", receive_friendships_path %></li>
             <li><a href="#">查找添加</a></li>
           </ul>
         </li>
@@ -34,7 +34,11 @@
     <%= yield %>
   </section>
   <aside>
+  <% if  u = get_current_user %>
+    <%= link_to u.nickname_or_email, user_path(u) %>
+  <% else %>
     no content here
+  <% end %>
   </aside>
 </div>
 <footer>

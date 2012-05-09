@@ -1,36 +1,18 @@
 <% if notice %>
 <p><%= notice %></p>
 <% end %>
-<%= form_tag apply_friendships_path do %>
+<%= form_tag fsend_friendships_path do %>
   <%= email_field_tag 'email', nil, required: true, autofocus: true %>
   <%= submit_tag "添加好友" %>
 <% end %>
 <h1>Listing friendships</h1>
 
-<table>
-  <tr>
-    <th>From</th>
-    <th>To</th>
-    <th>Status</th>
-    <th>Remark name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul>
 <% @friendships.each do |friendship| %>
-  <tr>
-    <td><%= friendship.from %></td>
-    <td><%= friendship.to %></td>
-    <td><%= friendship.status %></td>
-    <td><%= friendship.remark_name %></td>
-    <td><%= link_to 'Show', friendship %></td>
-    <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
-    <td><%= link_to 'Destroy', friendship, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <li>
+    <%= link_to friendship.get_identifier, user_path(friendship.friend) %>
+  </li>
 <% end %>
-</table>
+</ul>
 
-<br />
-
-<%= link_to 'New Friendship', new_friendship_path %>
+<%# <%= link_to 'New Friendship', new_friendship_path +| %>

@@ -1,0 +1,10 @@
+<table>
+<% @friendships.each do |f| %>
+  <% from = f.owner %>
+  <tr>
+    <td><%= link_to from.nickname_or_email, user_path(from) %>想加你为好友</td>
+    <td><%= button_to 'accept', accept_friendship_path(f) %></td>
+    <td><%= button_to 'reject', reject_friendship_path(f) %></td>
+  </tr>
+<%  end %>
+</table>
